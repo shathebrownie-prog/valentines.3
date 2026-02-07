@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins&display=swap');
+.flower {
+  position: absolute;
+  font-size: 26px;
+  animation: float 8s linear infinite;
+}
+
+
+body {
+  margin: 0;
+  height: 100vh;
+background: linear-gradient(135deg, #9fffe0, #dffff6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+
+.container {
+  background: rgba(255,255,255,0.9);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(255,105,180,0.4);
+  text-align: center;
+  max-width: 420px;
+}
+
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  color: #ff4f81;
+}
+
+
+button {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+#nextBtn {
+  background: #ff4f81;
+  color: white;
+}
+
+
+#yesBtn {
+  background: #ff4f81;
+  color: white;
+}
+
+
+#noBtn {
+  background: #cccccc;
+}
+
+
+button:hover {
+  transform: scale(1.08);
+}
+
+
+.heart {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-800px);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+  <h1 id="text">hie shonu… 💕</h1>
+  <button id="nextBtn" onclick="nextText()">Continue</button>
+</div>
+
+
+<script>
+    function playMusic(){
+  document.getElementById("bgMusic").play();
+}
+
+const messages = [
+  "my baby hehehe 💕",
+  "i just wanted to tell you something...",
+  "even though we're in long distance now...",
+  "you still feel right beside me ❤️",
+  "just like when we used to sit together in school",
+  "when we were inseparable 🥺",
+  "i still remember making you the samosassss",
+  "and how happy you were when you liked them 😭",
+  "our 7/11 trips for pink carbonara noodles",
+  "with a mandatory drink every time 😌",
+  "every little memory with you means everything to me kuchu",
+  "you are my safe place, the safest <3",
+  "my favorite person",
+  "my shonu",
+  "so I have a question...",
+  "will you be my valentine? 💘"
+];
+
+
+let index = 0;
+
+
+function nextText() {
+document.getElementById("bgMusic").play();
+
+    if(index < messages.length){
+    document.getElementById("text").innerHTML = messages[index];
+    index++;
+  } else {
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("text").innerHTML = "Will you be my Valentine? 💘";
+    document.querySelector(".container").innerHTML += `
+      <div>
+        <button id="yesBtn" onclick="yes()">Yes 💖</button>
+        <button id="noBtn" onmouseover="moveNo()">No 💔</button>
+      </div>
+    `;
+  }
+}
+
+
+function moveNo(){
+  const btn = document.getElementById("noBtn");
+  btn.style.position = "absolute";
+  btn.style.left = Math.random()*80 + "%";
+  btn.style.top = Math.random()*80 + "%";
+}
+
+
+function yes(){
+  document.body.innerHTML = `
+    <div class="container">
+      <h1>you said YES!!! 🥰</h1>
+      <p>happy valentine’s day my shonu 💐</p>
+      <p>i love you more than all the noodles in 7/11</p>
+      <p>forever, your Kuku 💖</p>
+<button id="letterBtn" onclick="showLetter()" style="
+  margin-top: 20px;
+  background: white;
+  color: #ff4f81;
+  border: 2px solid #ff4f81;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+" onmouseover="this.style.background='#ff4f81'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='#ff4f81';">
+💌 Click to read my love letter
+</button>
+    </div>
+  `;
+}
+
+    
+function showLetter(){
+  document.body.innerHTML = `
+    <div class="container">
+      <h1>My Love Letter for You 💖</h1>
+      <div id="letterBox" style="
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        text-align: left;
+        line-height: 1.6;
+        font-size: 16px;
+        max-height: 400px;
+        overflow-y: auto;
+        color: #333;
+        font-family: 'Poppins', sans-serif;
+      "></div>
+    </div>
+  `;
+
+  const paragraphs = [
+    `Shonu,`,
+    `Every single memory with you makes me smile, from our 7/11 pink carbonara noodle adventures to the onion-stuffed samosas I made you. Sitting beside you in school, feeling inseparable… those moments are etched in my heart forever.`,
+    `Even though we’re far apart now, you are always right here with me. You make my days brighter, my heart lighter, and my life so much better. I love you for everything you are, every little quirk, every laugh, every smile.`,
+    `I can’t wait for all the future memories we’ll make together. Thank you for being my Shonu, my person, my Valentine.`,
+    `Love always,\nKuku 💞`
+  ];
+
+  const box = document.getElementById("letterBox");
+  const speed = 60; // ms per character
+  let pIndex = 0;
+
+  function typeParagraph() {
+    if(pIndex < paragraphs.length){
+      const paraElem = document.createElement("p");
+      box.appendChild(paraElem);
+
+      let text = paragraphs[pIndex];
+      let i = 0;
+
+      function typeChar() {
+        if(i < text.length){
+          paraElem.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeChar, speed);
+          // auto scroll the letter box if content overflows
+          box.scrollTop = box.scrollHeight;
+        } else {
+          pIndex++;
+          paraElem.innerHTML += "<br>"; // add a line break after paragraph
+          setTimeout(typeParagraph, speed * 5); // small pause before next paragraph
+        }
+      }
+
+      typeChar();
+    }
+  }
+
+  typeParagraph();
+}
+startLetterFlowers();
+
+
+// Floating flowers inside the letter box
+function startLetterFlowers(){
+  const box = document.getElementById("letterBox");
+  if(!box) return;
+
+  setInterval(() => {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML = "🌷"; // you can change to 🌸 or 💐
+    flower.style.position = "absolute";
+    flower.style.left = Math.random() * (box.clientWidth - 20) + "px";
+    flower.style.top = Math.random() * (box.clientHeight - 20) + "px";
+    flower.style.fontSize = Math.random() * 18 + 12 + "px";
+    flower.style.pointerEvents = "none";
+    flower.style.opacity = 0.8;
+    flower.style.transition = "top 8s linear, opacity 8s linear";
+    box.appendChild(flower);
+
+    // Animate flower floating upward
+    setTimeout(() => {
+      flower.style.top = parseInt(flower.style.top) - 50 + "px";
+      flower.style.opacity = 0;
+    }, 50);
+
+    // Remove flower after animation
+    setTimeout(() => {
+      flower.remove();
+    }, 8000);
+  }, 600); // new flower every 600ms
+}
+
+    
+// Floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = Math.random()*20 + 10 + "px";
+  document.body.appendChild(heart);
+
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 400);
+
+setInterval(() => {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  flower.innerHTML = "🌷";
+  flower.style.left = Math.random()*100 + "vw";
+  flower.style.fontSize = Math.random()*25 + 15 + "px";
+  document.body.appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 8000);
+}, 900);
+</script>
+
+
+<audio id="bgMusic" loop>
+  <source src="https://dl.sndup.net/mkcv/Motta%20Modatisari.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" onclick="playMusic()" style="
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: #ff4f81;
+color: white;
+border: none;
+padding: 10px 18px;
+border-radius: 25px;
+cursor: pointer;
+">
+🎵 Play Music
+</button>
+
+<audio id="bgMusic" loop>
+  <source src="https://dl.sndup.net/mkcv/Motta%20Modatisari.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
